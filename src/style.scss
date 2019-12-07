@@ -57,7 +57,7 @@ body {
 @keyframes animate {
   30% {
     color: rgba($color: white, $alpha: 1);
-    transform: translateY(-15px);
+    transform: translateY(-15px) rotateY(360deg);
     text-shadow: 0 15px 5px rgba($color: #000000, $alpha: 1);
     margin-right: 10px;
   }
