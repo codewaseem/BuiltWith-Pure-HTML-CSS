@@ -13,82 +13,55 @@ body {
   align-items: center;
 }
 
-.square {
-  height: 100px;
-  width: 100px;
+.box {
   position: relative;
-  animation: rotate 4s linear infinite;
-  border: 10px dashed rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: perspective(1000px) rotateY(-45deg);
+  width: 200px;
+  height: 300px;
+  transform-style: preserve-3d;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.square > span {
+.box div {
   position: absolute;
-  display: block;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  transform-style: preserve-3d;
+  animation: fan 5s linear infinite;
 }
 
-.square > span:before {
-  content: "";
+@keyframes fan {
+  0% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(359deg);
+  }
+}
+
+.box div span {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border-top: 10px solid white;
-  animation: animate 2s linear infinite;
-  // animation-direction: alternate-reverse;
+  display: block;
+  background: linear-gradient(0deg, #f1f1f1, #bbb, #f1f1f1);
+  border-radius: 20px;
 }
 
-@keyframes animate {
-  0% {
-    left: -100%;
-  }
-  25% {
-    left: 0;
-  }
-  50%,
-  100% {
-    left: 100%;
-  }
+.box div span:nth-child(1) {
+  transform: rotateX(0deg);
 }
 
-.square > span:nth-child(1) {
-  transform: rotate(0deg);
+.box div span:nth-child(2) {
+  transform: rotateX(45deg);
 }
 
-.square > span:nth-child(2) {
-  transform: rotate(90deg);
+.box div span:nth-child(3) {
+  transform: rotateX(-45deg);
 }
-
-.square > span:nth-child(3) {
-  transform: rotate(180deg);
-}
-.square > span:nth-child(4) {
-  transform: rotate(270deg);
-}
-
-.square > span:nth-child(1)::before {
-  animation-delay: 0s;
-}
-.square > span:nth-child(2)::before {
-  animation-delay: 0.5s;
-}
-
-.square > span:nth-child(3)::before {
-  animation-delay: 1s;
-}
-.square > span:nth-child(4)::before {
-  animation-delay: 1.5s;
+.box div span:nth-child(4) {
+  transform: rotateX(90deg);
 }
