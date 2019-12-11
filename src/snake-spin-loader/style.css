@@ -48,7 +48,6 @@ body {
   height: 100%;
   border-top: 10px solid white;
   animation: animate 2s linear infinite;
-  // animation-direction: alternate-reverse;
 }
 
 @keyframes animate {
